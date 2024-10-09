@@ -30,10 +30,9 @@ public class Phys : MonoBehaviour
         rb.AddForce(abc*forcemagnitude, ForceMode.Impulse);
         */
         //no need to use damping force for now.
-        //float dampingFactor = 0.01f;
-        //rb.AddForce(-rb.velocity * dampingFactor);
+            //float dampingFactor = 0.01f;
+            //rb.AddForce(-rb.velocity * dampingFactor);
 
-        //aj dsk k kkdek l
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -43,12 +42,20 @@ public class Phys : MonoBehaviour
             {
                 if (hit.collider != null && hit.collider.gameObject.CompareTag("PEN"))
                 {
-                    Vector3 normal = hit.normal;
-                    if (normal == Vector3.right || normal == Vector3.left || normal == Vector3.forward || normal == Vector3.back)
+                    /*float threshold = 0.5f; 
+                    // phaase one of normal code, not working, only worked once and thats it, if condition too strict for chanding normal
+                    Vector3 normal = hit.normal;  //Debug.Log(normal);
+                    if (normal == Vector3.right  || normal == Vector3.left || normal == Vector3.forward || normal == Vector3.back)
+                    */
+                    float threshold = 0.5f;
+                    Vector3 normal = hit.normal.normalized;  //Debug.Log(normal);
+                    if (Vector3.Dot(normal, Vector3.right) > threshold || Vector3.Dot(normal, Vector3.left) > threshold ||
+                        Vector3.Dot(normal, Vector3.forward) > threshold || Vector3.Dot(normal, Vector3.back) > threshold)
                     {
                         //Debug.Log("Hit the xyz side");
                         //Debug.Log(hit.point);
-                        Vector3 abc = new Vector3(-1, 0, 0);
+                        
+                        Vector3 abc = -hit.normal; //Vector3 abc = new Vector3(-1, 0, 0); wwe use hit normal same thing but better.
                         float forcemagnitude = 10f;
                         rb.AddForceAtPosition(abc * forcemagnitude,hit.point, ForceMode.Impulse);
 
