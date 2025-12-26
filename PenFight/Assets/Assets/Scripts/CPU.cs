@@ -48,9 +48,9 @@ public class CPU : MonoBehaviour
             directionBTW = (POS_player - POS_CPU).normalized;
             angleBTW = Vector3.Angle(TF_cpupen.forward, directionBTW);
 
-            Debug.Log($"Distance to player: {distanceBTW}");
-            Debug.Log($"Angle to player: {directionBTW}");
-            Debug.Log($"Direction to player: {angleBTW}");
+           // Debug.Log($"Distance to player: {distanceBTW}");
+           // Debug.Log($"Angle to player: {directionBTW}");
+           // Debug.Log($"Direction to player: {angleBTW}");
         }
     }
 }
