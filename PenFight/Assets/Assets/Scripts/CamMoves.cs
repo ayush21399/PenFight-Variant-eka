@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CamMoves : MonoBehaviour
@@ -7,7 +8,7 @@ public class CamMoves : MonoBehaviour
     Dictionary<string, Transform> CamBoardPoints = new Dictionary<string, Transform>();
     Transform pointA, pointB, pointC, pointD, pointE, pointF, pointG, pointH;
 
-
+    public float movespeed = 7f;
 
     void Start()
     {
@@ -25,13 +26,16 @@ public class CamMoves : MonoBehaviour
         pointF = CamBoardPoints["CamPointF"];
         pointG = CamBoardPoints["CamPointG"];
         pointH = CamBoardPoints["CamPointH"];
-        // Debug.Log(pointA.position);
+        // Debug.Log(pointA.position);s
         
     }
 
    
     void Update()
     {
-        
+
+        float input = Input.GetAxisRaw("Horizontal");
+        transform.position += Vector3.forward * input * movespeed * Time.deltaTime;
+
     }
 }

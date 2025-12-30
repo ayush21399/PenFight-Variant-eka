@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PEN
   - CPU
+  - CamPoint
   layers:
   - Default
   - TransparentFX
